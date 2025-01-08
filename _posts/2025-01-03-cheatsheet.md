@@ -1,4 +1,4 @@
-# Image
+# Cheatsheet Image
 ## 1. File To identify the type of file you are dealing with: 
 ```bash 
 type filename
