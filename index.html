@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Artiste</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 90vh;
+        }
+        .modal img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            padding: 20px;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            border-radius: 50%;
+            padding: 10px;
+        }
+        .prev:hover, .prev:focus, .next:hover, .next:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        .prev {
+            left: 15px;
+        }
+        .next {
+            right: 65px;
+        }
+        #caption {
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #f1f1f1;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <!-- Logo -->
+            <h1 class="text-2xl font-bold text-gray-900">Marie Zdziarek</h1>
+    
+            <!-- Menu burger (mobile) -->
+            <button id="menu-btn" class="md:hidden flex flex-col space-y-1 focus:outline-none">
+                <span class="block w-6 h-0.5 bg-black transition-transform"></span>
+                <span class="block w-6 h-0.5 bg-black transition-transform"></span>
+                <span class="block w-6 h-0.5 bg-black transition-transform"></span>
+            </button>
+    
+            <!-- Navbar (desktop) -->
+            <nav class="hidden md:flex space-x-6 text-lg">
+                <a href="#about" class="relative group">À propos<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span></a>
+                <a href="#gallery" class="relative group">Galerie<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span></a>
+                <a href="#exhibitions" class="relative group">Expositions<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span></a>
+                <a href="#shop" class="relative group">Boutique<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span></a>
+                <a href="#contact" class="relative group">Contact<span class="absolute left-0 bottom-0 w-0 h-0.5 bg-red-500 transition-all group-hover:w-full"></span></a>
+            </nav>
+        </div>
+    
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden flex flex-col space-y-4 text-center p-4 bg-red-600 text-white md:hidden">
+            <a href="#about" class="py-2 hover:bg-red-700 rounded">À propos</a>
+            <a href="#gallery" class="py-2 hover:bg-red-700 rounded">Galerie</a>
+            <a href="#exhibitions" class="py-2 hover:bg-red-700 rounded">Expositions</a>
+            <a href="#shop" class="py-2 hover:bg-red-700 rounded">Boutique</a>
+            <a href="#contact" class="py-2 hover:bg-red-700 rounded">Contact</a>
+        </div>
+    </header>
+    
+    <script>
+    document.getElementById("menu-btn").addEventListener("click", function() {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+    });
+    </script>
+        <!-- Hero Section -->
+        <section class="h-screen flex items-center justify-center bg-center w-screen" style="background-image: url('images/icone.gif');">
+            <div class="p-4 md:p-10">
+                <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold mt-6 text-gray-950 font-serif bg-gradient-to-r from-gray-800 to-gray-950 text-transparent bg-clip-text drop-shadow-[0_0_10px_rgba(255,255,255,1.8)]">
+                  Marie Zdziarek
+                </h1>
+              </div>
+              
+        </section>
+    <main class="container mx-auto px-4">
+
+
+
+        <section id="about" class="text-center py-12">
+                <h2 id="gallery" class="text-center py-8 text-4xl font-bold mb-6 text-gray-950 underline decoration-wavy decoration-red-400">
+                    A propos
+                </h2>
+                <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto px-4">
+                    Les techniques de dessin et de gravure, telles que le croquis au fusain et l'eau-forte, permettent de capturer des détails fins et des textures uniques sur le papier. Ces méthodes traditionnelles exigent patience et précision, offrant des œuvres d'art intemporelles qui révèlent la maîtrise et la sensibilité de l'artiste.            </p>
+        </section>
+                  
+        <div class="py-12">
+            <h2 id="gallery" class="text-center py-8 text-4xl font-bold mb-6 text-gray-950 underline decoration-wavy decoration-red-400">
+                Galerie
+            </h2>
+            <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto px-4">
+                Les techniques de dessin et de gravure, telles que le croquis au fusain et l'eau-forte, permettent de capturer des détails fins et des textures uniques sur le papier. Ces méthodes traditionnelles exigent patience et précision, offrant des œuvres d'art intemporelles qui révèlent la maîtrise et la sensibilité de l'artiste.            </p>
+          </div>
+        <section id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+            
+            
+            <div class="gallery-box overflow-hidden rounded-lg  transform hover:scale-105 transition relative" onclick="openModal('images/danseuse2.webp', 'Danseuses', 1)">
+                <img src="images/danseuse2.webp" class="w-full h-60 object-cover" alt="Danseuse 2">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Danseuse 2</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg transform hover:scale-105 transition relative" onclick="openModal('images/danseuses-dos.webp', 'Danseuses de dos', 2)">
+                <img src="images/danseuses-dos.webp" class="w-full h-60 object-cover" alt="Danseuses Dos">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Danseuses Dos</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lgtransform hover:scale-105 transition relative" onclick="openModal('images/holy_mary_2.webp', 'Sainte Marie', 3)">
+                <img src="images/holy_mary_2.webp" class="w-full h-60 object-cover" alt="Holy Mary 2">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Holy Mary 2</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg transform hover:scale-105 transition relative" onclick="openModal('images/neige1.webp', 'Neige 1', 3)">
+                <img src="images/neige1.webp" class="w-full h-full object-cover" alt="Holy Mary 2">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Holy Mary 2</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg transform hover:scale-105 transition relative" onclick="openModal('images/neige2.webp', 'Neige 2', 3)">
+                <img src="images/neige2.webp" class="w-full h-full object-cover" alt="Holy Mary 2">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Holy Mary 2</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg transform hover:scale-105 transition relative" onclick="openModal('images/neige3.webp', 'Neige 3', 3)">
+                <img src="images/neige3.webp" class="w-full h-full object-cover" alt="Holy Mary 2">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Holy Mary 2</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg transform hover:scale-105 transition relative" onclick="openModal('images/neige4.webp', 'Neige 4', 3)">
+                <img src="images/neige4.webp" class="w-full h-full object-cover" alt="Holy Mary 2">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Holy Mary 2</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg transform hover:scale-105 transition relative" onclick="openModal('images/neige5.webp', 'Neige 5', 3)">
+                <img src="images/neige5.webp" class="w-full h-full object-cover" alt="Holy Mary 2">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Holy Mary 2</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg transform hover:scale-105 transition relative" onclick="openModal('images/neige6.webp', 'Neige 6', 3)">
+                <img src="images/neige6.webp" class="w-full h-full object-cover" alt="Holy Mary 2">
+            </div>
+            
+        </section>
+        <div class="py-12">
+            <h2 id="animation" class="text-center py-8 text-4xl font-bold mb-6 text-gray-950 underline decoration-wavy decoration-red-400">
+              Animations
+            </h2>
+            <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto px-4">
+                Les techniques d'animation modernes, telles que l'animation 3D et le motion design, permettent de créer des visuels dynamiques et captivants. Elles combinent art et technologie pour donner vie à des personnages et des environnements, offrant ainsi une expérience immersive et engageante pour le spectateur.
+            </p>
+          </div>
+        <section id="animation" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+            
+            <div class="gallery-box overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition relative" onclick="openModal('images/icone.gif', 'Icône', 4)">
+                <img src="images/icone.gif" class="w-full h-60 object-cover" alt="Icône">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Icône</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition relative" onclick="openModal('images/reconciliation_v2.gif', 'Réconciliation', 5)">
+                <img src="images/reconciliation_v2.gif" class="w-full h-60 object-cover" alt="Réconciliation">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Réconciliation</span>
+            </div>
+            <div class="gallery-box overflow-hidden rounded-lg shadow-lg transform hover:scale-105 transition relative" onclick="openModal('images/ange.gif', 'Ange', 0)">
+                <img src="images/ange.gif" class="w-full h-60 object-cover" alt="Ange">
+                <span class="absolute bottom-2 left-2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 hover:opacity-100 transition">Ange</span>
+            </div>
+        </section>
+
+        <section id="exhibitions" class="text-center py-12">
+            <h2 class="text-3xl font-semibold mb-4 text-gray-950">Expositions</h2>
+            <p class="text-lg text-gray-950 max-w-2xl mx-auto">Découvrez les expositions passées et à venir où vous pouvez voir les œuvres de l'artiste en personne.</p>
+        </section>
+        <section id="contact" class="text-center py-12">
+            <h2 class="text-3xl font-semibold mb-4 text-gray-950">Contact</h2>
+            <p class="text-lg text-gray-950 max-w-2xl mx-auto mb-6">Si vous souhaitez en savoir plus sur mon travail ou discuter d'une collaboration, n'hésitez pas à me contacter. Je serais ravie de discuter de vos idées et projets.</p>
+            <button class="contact-btn bg-white text-gray-950 px-6 py-3 rounded-full text-lg font-bold shadow-md hover:bg-gray-300">Me Contacter</button>
+        </section>
+    </main>
+    <footer class="text-center py-6 text-gray-400">
+        <p>&copy; 2025 - Portfolio Artiste</p>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="myModal" class="modal">
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        const images = [
+            { src: 'images/ange.gif', caption: 'Ange' },
+            { src: 'images/danseuse2.webp', caption: 'Danseuses' },
+            { src: 'images/danseuses-dos.webp', caption: 'Danseuses de dos' },
+            { src: 'images/holy_mary_2.webp', caption: 'Sainte Marie' },
+            { src: 'images/neige1.webp', caption: 'Neige 1' },
+            { src: 'images/neige2.webp', caption: 'Neige 2' },
+            { src: 'images/neige3.webp', caption: 'Neige 3' },
+            { src: 'images/neige4.webp', caption: 'Neige 4' },
+            { src: 'images/neige5.webp', caption: 'Neige 5' },
+            { src: 'images/neige6.webp', caption: 'Neige 6' },
+            { src: 'images/icone.gif', caption: 'Icône' },
+            { src: 'images/reconciliation_v2.gif', caption: 'Réconciliation' }
+        ];
+
+        let currentIndex = 0;
+
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.gallery-box').forEach(box => {
+            gsap.from(box, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: box,
+                    start: "top 80%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+        gsap.from("header h1", {opacity: 0, y: -50, duration: 1, ease: "bounce.out"});
+        gsap.from(".contact-btn", {opacity: 0, scale: 0.5, duration: 1, delay: 0.5, ease: "back.out(1.7)"});
+
+        // Modal functionality
+        function openModal(src, caption, index) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('caption').innerText = caption;
+            currentIndex = index;
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function changeImage(n) {
+            currentIndex = (currentIndex + n + images.length) % images.length;
+            document.getElementById('modalImage').src = images[currentIndex].src;
+            document.getElementById('caption').innerText = images[currentIndex].caption;
+        }
+
+
+        document.getElementsByClassName('prev')[0].onclick = function() {
+            changeImage(-1);
+        }
+
+        document.getElementsByClassName('next')[0].onclick = function() {
+            changeImage(1);
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                document.getElementById('myModal').style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
